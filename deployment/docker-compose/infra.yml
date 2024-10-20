@@ -39,7 +39,7 @@ services:
           memory: 500m
 
   bookstore-rabbitmq:
-    image: rabbitmq:4.0.2-alpine
+    image: rabbitmq:3.12.11-management
     container_name: bookstore-rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=guest
