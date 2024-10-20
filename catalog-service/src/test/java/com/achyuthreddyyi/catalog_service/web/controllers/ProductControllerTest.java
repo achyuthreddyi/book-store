@@ -1,17 +1,16 @@
 package com.achyuthreddyyi.catalog_service.web.controllers;
 
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import com.achyuthreddyyi.catalog_service.AbstractIT;
 import com.achyuthreddyyi.catalog_service.domain.Product;
 import io.restassured.http.ContentType;
+import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.jdbc.Sql;
-
-import java.math.BigDecimal;
 
 @Sql("/test-data.sql")
 class ProductControllerTest extends AbstractIT {
@@ -34,7 +33,7 @@ class ProductControllerTest extends AbstractIT {
     }
 
     @Test
-    void shouldGetProductBuCode(){
+    void shouldGetProductBuCode() {
         Product product = given().contentType(ContentType.JSON)
                 .when()
                 .get("/api/products/{code}", "P100")
@@ -52,7 +51,7 @@ class ProductControllerTest extends AbstractIT {
     }
 
     @Test
-    void shouldReturnNotFoundWhenProductCodeNotExists(){
+    void shouldReturnNotFoundWhenProductCodeNotExists() {
         String code = "invalid_product_code";
         given().contentType(ContentType.JSON)
                 .when()
@@ -61,7 +60,6 @@ class ProductControllerTest extends AbstractIT {
                 .statusCode(404)
                 .body("status", is(404))
                 .body("title", is("Product Not Found"))
-                .body("detail", is("Product not found with code: "+ code + " not found in our records."));
-
+                .body("detail", is("Product not found with code: " + code + " not found in our records."));
     }
 }
