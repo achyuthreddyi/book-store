@@ -19,3 +19,22 @@ services:
       resources:
         limits:
           memory: 700m
+
+  orders-service:
+    image: ncsachyuth/bookstore-order-service
+    container_name: orders-service
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - DB_URL=jdbc:postgresql://orders-db:5432/orders
+      - DB_USERNAME=orders
+      - DB_PASSWORD=orders
+    ports:
+      - "8082:8082"
+    restart: unless-stopped
+    depends_on:
+      orders-db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 700m
