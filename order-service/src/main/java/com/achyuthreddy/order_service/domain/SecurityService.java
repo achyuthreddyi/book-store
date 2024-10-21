@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SecurityService {
-    public String getLoginUser(){
+    public String getLoginUser() {
         return "user";
     }
 }

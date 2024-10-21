@@ -1,13 +1,14 @@
 package com.achyuthreddy.order_service.domain;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "order_items")
 class OrderItemEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_id_generator")
-    @SequenceGenerator(name="order_item_id_generator", sequenceName = "order_item_id_seq")
+    @SequenceGenerator(name = "order_item_id_generator", sequenceName = "order_item_id_seq")
     private Long id;
 
     @Column(nullable = false)
@@ -72,5 +73,4 @@ class OrderItemEntity {
     public void setOrder(OrderEntity order) {
         this.order = order;
     }
-
 }

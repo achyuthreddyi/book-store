@@ -4,7 +4,6 @@ import com.achyuthreddy.order_service.domain.models.Address;
 import com.achyuthreddy.order_service.domain.models.Customer;
 import com.achyuthreddy.order_service.domain.models.OrderStatus;
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -52,10 +51,10 @@ class OrderEntity {
 
     private String comments;
 
-    @Column(name="created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @Column(name="updated_at")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
     public Long getId() {
