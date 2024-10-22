@@ -46,14 +46,15 @@ public class OrderControllerUnitTests {
     }
 
     @Test
-    void shouldCreateOrderSuccessfullyWhenOrderPayloadIsValid() throws Exception{
+    void shouldCreateOrderSuccessfullyWhenOrderPayloadIsValid() throws Exception {
         CreateOrderRequest valid_request = createValidOrderRequest();
 
-        given(orderService.createOrder(eq("achyuth"), any(CreateOrderRequest.class))).willReturn(new CreateOrderResponse("some_order_id"));
+        given(orderService.createOrder(eq("achyuth"), any(CreateOrderRequest.class)))
+                .willReturn(new CreateOrderResponse("some_order_id"));
 
         mockMvc.perform(post("/api/orders")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(valid_request)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(valid_request)))
                 .andExpect(status().isCreated());
     }
 
@@ -76,5 +77,4 @@ public class OrderControllerUnitTests {
                 arguments(named("Order with Invalid Delivery Address", createOrderRequestWithInvalidDeliveryAddress())),
                 arguments(named("Order with No Items", createOrderRequestWithNoItems())));
     }
-
 }
