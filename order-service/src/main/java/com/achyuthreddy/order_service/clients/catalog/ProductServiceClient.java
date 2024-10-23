@@ -1,6 +1,8 @@
 package com.achyuthreddy.order_service.clients.catalog;
 
 import java.util.Optional;
+
+import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,10 +18,9 @@ public class ProductServiceClient {
         this.restClient = restClient;
     }
 
+    @Retry(name = "catalog-service")
     public Optional<Product> getProductByCode(String code) {
         logger.info("Fetching product for code: {}", code);
-
-        try {
             var product = restClient
                     .get()
                     .uri("/api/products/{code}", code)
@@ -27,10 +28,5 @@ public class ProductServiceClient {
                     .body(Product.class);
 
             return Optional.ofNullable(product);
-
-        } catch (Exception e) {
-            logger.error("Error fetching product for code: {}", code, e);
-            return Optional.empty();
-        }
     }
 }
