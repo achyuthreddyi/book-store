@@ -18,6 +18,8 @@
 		<springdoc-openapi.version>2.5.0</springdoc-openapi.version>
 		<spotless-maven-plugin.version>2.43.0</spotless-maven-plugin.version>
 		<dockerImageName>ncsachyuth/bookstore-${project.artifactId}</dockerImageName>
+		<wiremock.version>3.9.1</wiremock.version>
+		<wiremock-testcontainers.version>1.0-alpha-13</wiremock-testcontainers.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -111,6 +113,19 @@
             <version>4.5.1</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.wiremock</groupId>
+			<artifactId>wiremock-standalone</artifactId>
+			<version>${wiremock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.wiremock.integrations.testcontainers</groupId>
+			<artifactId>wiremock-testcontainers-module</artifactId>
+			<version>${wiremock-testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+
     </dependencies>
 	<build>
 		<plugins>

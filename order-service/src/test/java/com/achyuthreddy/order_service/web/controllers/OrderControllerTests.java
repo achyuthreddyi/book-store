@@ -17,6 +17,10 @@ class OrderControllerTests extends AbstractIT {
         @Test
         void shouldCreateOrderSuccessfully() {
             var payload = TestDataFactory.createValidOrderRequest();
+            var firstItem = payload.items().iterator().next();
+
+            mockGetProductByCode(firstItem.code(), firstItem.name(), firstItem.price());
+
             given().contentType(ContentType.JSON)
                     .body(payload)
                     .when()
