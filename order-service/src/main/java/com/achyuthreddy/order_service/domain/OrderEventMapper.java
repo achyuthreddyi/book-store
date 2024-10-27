@@ -2,22 +2,20 @@ package com.achyuthreddy.order_service.domain;
 
 import com.achyuthreddy.order_service.domain.models.OrderCreatedEvent;
 import com.achyuthreddy.order_service.domain.models.OrderItem;
-
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class OrderEventMapper {
-    static OrderCreatedEvent buildOrderCreatedEvent(OrderEntity order){
+    static OrderCreatedEvent buildOrderCreatedEvent(OrderEntity order) {
         return new OrderCreatedEvent(
                 UUID.randomUUID().toString(),
                 order.getOrderNumber(),
                 getOrderItems(order),
                 order.getCustomer(),
                 order.getDeliveryAddress(),
-                LocalDateTime.now()
-        );
+                LocalDateTime.now());
     }
 
     private static Set<OrderItem> getOrderItems(OrderEntity order) {

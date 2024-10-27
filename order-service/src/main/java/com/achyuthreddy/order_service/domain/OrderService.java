@@ -34,4 +34,9 @@ public class OrderService {
         orderEventService.save(orderCreatedEvent);
         return new CreateOrderResponse(savedOrder.getOrderNumber());
     }
+
+    public void publishOrders() {
+        System.out.println("Publishing from service layer");
+        orderEventService.publishOrderEvents();
+    }
 }
