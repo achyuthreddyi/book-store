@@ -1,6 +1,6 @@
 # Bookstore Microservices
 
-This project consists of three microservices for a bookstore application: `order-service`, `catalog-service`, and `notification-service`. These services work together to provide a complete e-commerce solution for book ordering, catalog management, and customer notifications.
+This project consists of four microservices for a bookstore application: `order-service`, `catalog-service`, `user-service` and `notification-service`. These services work together to provide a complete e-commerce solution for book ordering, catalog management, and customer notifications.
 
 ## Services Overview
 
@@ -113,8 +113,56 @@ To run the services using Docker containers, we use Docker Compose. The configur
 
 ### Notes
 
-- The `infra.yml` file sets up PostgreSQL databases for both catalog and order services, as well as RabbitMQ.
+- The `infra.yml` file sets up PostgreSQL databases for catalog and order services and RabbitMQ.
 - The `apps.yml` file configures and runs the catalog-service and order-service containers (Notification service to be implemented).
 - Make sure to wait for the infrastructure services to be fully up before starting the application services.
+
+## Future Improvements & TODOs
+
+### Service Enhancements
+1. Order Service
+   - Implement GET /api/orders endpoint for retrieving orders
+   - Implement PUT /api/orders endpoint for updating order status
+   - Add order history and tracking functionality
+
+2. Notification Service
+   - Implement email notification system for order updates
+   - Set up email templates for different notification types
+
+3. API Gateway
+   - Implement API Gateway using Spring Cloud Gateway
+   - Set up routing and load balancing
+   - Implement rate limiting and request validation
+  
+4. Search Enhancement
+   - Integrate Elasticsearch for improved product search
+   - Add search suggestions and autocomplete
+
+### New Services
+
+5. User Service
+   - Implement a user management system
+   - Support different user roles:
+     - Customer
+     - Delivery Agent
+     - Seller
+   - Add user profile management
+   - Implement user registration and account management
+
+6. Authentication Service
+   - Implement OAuth2/JWT based authentication
+   - Add role-based access control (RBAC)
+   - Implement secure session management
+   - Add support for social login
+
+### Observability
+
+7. Monitoring & Observability
+   - Set up Prometheus for metrics collection
+   - Configure Grafana dashboards for:
+     - System health
+   - Implement distributed tracing
+   - Set up centralized logging
+   
 
    
