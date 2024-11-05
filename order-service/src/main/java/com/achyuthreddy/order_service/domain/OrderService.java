@@ -2,6 +2,7 @@ package com.achyuthreddy.order_service.domain;
 
 import com.achyuthreddy.order_service.domain.models.*;
 import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -70,5 +71,15 @@ public class OrderService {
     private boolean canBeDelivered(OrderEntity order) {
         return DELIVERY_ALLOWED_COUNTRIES.contains(
                 order.getDeliveryAddress().country().toUpperCase());
+    }
+
+    public List<OrderSummary> findOrders(String username) {
+        return orderRepository.findByUserName(username);
+    }
+
+    public Optional<OrderDTO> findUserOrder(String userName, String orderNumber) {
+        return orderRepository
+                .findByUseNameAndOrderNumber(userName, orderNumber)
+                .map(OrderMapper::convertToDTO);
     }
 }
