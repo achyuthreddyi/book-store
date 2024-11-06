@@ -21,6 +21,18 @@ tasks:
     cmds:
       - "{{.MVNW}} spotless:apply"
 
+  dev_run_product:
+    cmds:
+      - "{{.MVNW}} -pl catalog-service spring-boot:run"
+
+  dev_run_order:
+    cmds:
+      - "{{.MVNW}} -pl order-service spring-boot:run"
+
+  dev_run_notification:
+    cmds:
+      - "{{.MVNW}} -pl notification-service spring-boot:run"
+
   build:
     cmds:
       - "{{.MVNW}} -pl catalog-service spring-boot:build-image -DskipTests"
