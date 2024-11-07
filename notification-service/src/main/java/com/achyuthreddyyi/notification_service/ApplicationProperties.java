@@ -12,4 +12,5 @@ public record ApplicationProperties(
         String newOrdersRoutingKey,
         String deliveredOrdersRoutingKey,
         String cancelledOrdersRoutingKey,
-        String errorOrdersRoutingKey) {}
+        String errorOrdersRoutingKey,
+        String supportEmail) {}
