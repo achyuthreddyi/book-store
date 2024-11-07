@@ -109,7 +109,7 @@ public class NotificationService {
             emailSender.send(mimeMessage);
             log.info("Email sent to: {}", recipient);
         } catch (Exception e) {
-            throw new RuntimeException("Error while sending email", e);
+            throw new RuntimeException("Failed to send email", e);
         }
     }
 }
