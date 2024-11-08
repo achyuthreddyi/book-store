@@ -2,7 +2,7 @@ version: '3'
 
 vars:
   GOOS: "{{default OS .GOOS}}"
-  MVNW: '{{if eq .GOOS "windows"}}mvnw.cmd{{else}}./mvnw{{end}}'
+  MVNW: '{{if eq .GOOS "windows"}}.cmd{{else}}./mvnw{{end}}'
   DC_DIR: "deployment/docker-compose"
   INFRA_DC_FILE: "{{.DC_DIR}}/infra.yml"
   APPS_DC_FILE: "{{.DC_DIR}}/apps.yml"
@@ -32,6 +32,10 @@ tasks:
   dev_run_notification:
     cmds:
       - "{{.MVNW}} -pl notification-service spring-boot:run"
+
+  dev_run_api_gateway:
+    cmds:
+      - "{{.MVNW}} -pl api-gateway spring-boot:run"
 
   build:
     cmds:

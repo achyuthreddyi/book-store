@@ -79,7 +79,7 @@ services:
 
   api-gateway:
     image: ncsachyuth/bookstore-api-gateway
-    container_name: api-gateway
+    container_name: bookstore-api-gateway
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - CATALOG_SERVICE_URL=http://catalog-service:8081
@@ -87,7 +87,7 @@ services:
     ports:
       - "8989:8989"
     restart: unless-stopped
-    depends_on:
+    deploy:
       resources:
         limits:
           memory: 700m
