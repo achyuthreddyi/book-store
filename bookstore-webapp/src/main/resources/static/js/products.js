@@ -16,8 +16,8 @@ document.addEventListener('alpine:init', () => {
             });
         },
         addToCart(product) {
-//            addProductToCart(product)
-              console.log("Adding product to cart", product)
+            addProductToCart(product)
+             console.log("Adding product to cart", product)
         }
 
     }))
