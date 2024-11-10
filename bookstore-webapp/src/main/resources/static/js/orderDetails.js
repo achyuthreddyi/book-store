@@ -11,7 +11,7 @@ document.addEventListener('alpine:init', () => {
             this.getOrderDetails(this.orderNumber)
         },
         getOrderDetails(orderNumber) {
-            $.getJSON("http://localhost:8989/orders/api/orders/"+ orderNumber, (data) => {
+            $.getJSON("/api/orders/"+ orderNumber, (data) => {
                 //console.log("Get Order Resp:", data)
                 this.orderDetails = data
             });
